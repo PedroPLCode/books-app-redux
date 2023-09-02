@@ -5,6 +5,10 @@ import initialState from './initialState';
 //selectors
 export const getAllBooks = (state) => state.books;
 
+//action creators
+export const addBook = payload => ({ type: 'ADD_BOOK', payload });
+export const removeBook = payload => ({ type: 'REMOVE_BOOK', payload });
+
 const reducer = (state, action) => {
   switch (action.type) {
     case 'ADD_BOOK': 

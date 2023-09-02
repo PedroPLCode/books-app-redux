@@ -1,17 +1,16 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getAllBooks } from '../../redux/store';
+import Book from '../Book/Book';
 
 const BooksList = () => {
 
-  const dispatch = useDispatch();
   const books = useSelector(getAllBooks);
 
   return (
     <section>
       <h3>List od Books:</h3>
       <ul>
-      {books.map(book =>
-        <li>- TITLE: {book.title} AUTHOR: {book.author} <button onClick={() => dispatch( { type: 'REMOVE_BOOK', payload: book.id } )}>x</button></li>
+        {books.map(book => <Book key={book.id} {...book} />
       )}
       </ul>
     </section>
