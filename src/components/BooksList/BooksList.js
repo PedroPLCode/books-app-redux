@@ -1,9 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { getAllBooks } from '../../redux/store';
 
 const BooksList = () => {
 
   const dispatch = useDispatch();
-  const books = useSelector(state => state.books);
+  const books = useSelector(getAllBooks);
 
   return (
     <section>

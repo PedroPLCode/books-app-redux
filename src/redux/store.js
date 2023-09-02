@@ -2,6 +2,9 @@ import { createStore } from 'redux';
 import shortid from 'shortid';
 import initialState from './initialState';
 
+//selectors
+export const getAllBooks = (state) => state.books;
+
 const reducer = (state, action) => {
   switch (action.type) {
     case 'ADD_BOOK': 
