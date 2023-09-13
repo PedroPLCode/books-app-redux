@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { getAllBooks } from '../../redux/store';
+import { getAllBooks } from '../../redux/booksReducer';
 import Book from '../Book/Book';
 
 const BooksList = () => {

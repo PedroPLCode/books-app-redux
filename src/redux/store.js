@@ -1,29 +1,14 @@
-import { createStore } from 'redux';
-import shortid from 'shortid';
+import { createStore, applyMiddleware, compose } from 'redux';
+import booksReducer from './booksReducer';
 import initialState from './initialState';
-
-//selectors
-export const getAllBooks = (state) => state.books;
-
-//action creators
-export const addBook = payload => ({ type: 'ADD_BOOK', payload });
-export const removeBook = payload => ({ type: 'REMOVE_BOOK', payload });
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'ADD_BOOK': 
-      return { ...state, books: [...state.books, { ...action.payload, id: shortid() }]};
-    case 'REMOVE_BOOK': 
-      return { ...state, books: [...state.books.filter(book => action.payload !== book.id)]};
-    default:
-      return state;
-  }
-};
+import thunk from 'redux-thunk';
 
 const store = createStore(
-  reducer,
+  booksReducer,
   initialState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  compose(
+    applyMiddleware(thunk),
+  )
 );
   
 export default store;
